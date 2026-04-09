@@ -50,8 +50,8 @@ void popular_automato() {
             int dy = abs(y1 - y2);
 
             // Validação do movimento em L
-            // dx == 1 && dy == 2: 1 vertical seguido por 2 horizontais
-            // x == 2 && dy == 1: 2 horizontais seguido por 1 vertical
+            // dx == 1 && dy == 2: 1 deslocamento horizontal e 2 deslocamentos verticais
+            // x == 2 && dy == 1: 2 deslocamentos horizontais e 1 deslocamentos vertical
             if ((dx == 1 && dy == 2) || (dx == 2 && dy == 1)) {
                 transicao[i][j] = j; // Transição válida: vai para o estado da casa de destino [cite: 30]
             } else {
