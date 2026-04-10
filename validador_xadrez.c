@@ -2,16 +2,18 @@
 #include <stdlib.h>
 #include <string.h>
 
+// Declaração de variáveis
 #define NUM_ESTADOS 64
-#define ESTADO_ERRO 64 // qerr: O estado de erro conforme o requisito 2.6 
+#define ESTADO_ERRO 64 
+
+// ESTADO_ERRO -> qerr
 
 // Matriz de Transição Delta(Q, Sigma) 
+int transicao[NUM_ESTADOS + 1][NUM_ESTADOS];
 // 65 linhas (0-63 posicoes do tabuleiro + 64 estado de erro) -> estado inicial (q0)
 // 64 colunas (0-63 posicoes do tabuleiro) -> estado final (q1)
 
-int transicao[NUM_ESTADOS + 1][NUM_ESTADOS];
-
-// Converte coordenada (ex: "a1") para índice 0-63 [cite: 18]
+// Converte coordenada (ex: "a1") para índice 0-63 
 int coord_to_idx(char col, char lin) {
 
     // validador de posicao 
@@ -68,7 +70,6 @@ void popular_automato() {
 }
 
 int main(int argc, char *argv[]) {
-    // Requisito 2: Entrada via linha de comando (CLI) 
     if (argc < 2) {
         printf("Uso: %s <sequencia_de_movimentos>\n", argv[0]);
         return 1;
@@ -81,7 +82,7 @@ int main(int argc, char *argv[]) {
     char *cadeia = argv[1];
     int tam = strlen(cadeia);
 
-    // Validação de formato (deve ser par, ex: a1b3c5)
+    // Validação de formato (tamanho deve ser par, ex: a1b3c5)
     if (tam < 2 || tam % 2 != 0) {
         printf("REJEITADA\n");
         printf("Formatação de Estado Inicial Inválida\n");
@@ -108,11 +109,10 @@ int main(int argc, char *argv[]) {
     strcat(caminho, temp);
 
     // Processamento dos símbolos subsequentes
-
     for (int i = 2; i < tam; i += 2) {
         int proximo_simbolo = coord_to_idx(cadeia[i], cadeia[i+1]);
         
-        // Rejeitado por formato invadio
+        // Rejeitado por formato inválido
         if (proximo_simbolo == -1) {
             printf("REJEITADA\n");
             printf("Ponto de Quebra: %s\n", temp);
@@ -122,7 +122,7 @@ int main(int argc, char *argv[]) {
         // Aplicação da Função de Transição Delta 
         estado_atual = transicao[estado_atual][proximo_simbolo];
 
-        // Se transitar para o estado de erro, a cadeia é interrompida [cite: 22, 46]
+        // Se transitar para o estado de erro, a cadeia é interrompida 
         if (estado_atual == ESTADO_ERRO) {
             printf("REJEITADA\n");
             printf("Ponto de Quebra: %s\n", temp);
@@ -135,7 +135,7 @@ int main(int argc, char *argv[]) {
         strcat(caminho, temp);
     }
 
-    // Se terminou o processamento sem transitar para qerr, é ACEITA [cite: 37, 45]
+    // Se terminou o processamento sem transitar para qerr, é ACEITA
     printf("ACEITA\n%s\n", caminho);
 
     return 0;
