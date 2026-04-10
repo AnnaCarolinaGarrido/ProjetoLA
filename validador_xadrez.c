@@ -13,10 +13,10 @@ int transicao[NUM_ESTADOS + 1][NUM_ESTADOS];
 // 65 linhas (0-63 posicoes do tabuleiro + 64 estado de erro) -> estado inicial (q0)
 // 64 colunas (0-63 posicoes do tabuleiro) -> estado final (q1)
 
-// Converte coordenada (ex: "a1") para índice 0-63 
+// Converte casa/coordenada do tabulerio (ex: "a1") para índice da matriz 0-63 
 int coord_to_idx(char col, char lin) {
 
-    // validador de posicao 
+    // Valida posição
     if (col < 'a' || col > 'h' || lin < '1' || lin > '8') {
         return -1;
     }
@@ -26,15 +26,14 @@ int coord_to_idx(char col, char lin) {
 
 // Converte índice de volta para string (para imprimir o caminho) 
 void idx_to_coord(int idx, char *res) {
-    // converte linha do tabuleiro (letra)
+    // Converte linha do tabuleiro (letra)
     res[0] = (idx % 8) + 'a';
-    // converte coluna do tabuleiro (número)
+    // Converte coluna do tabuleiro (número)
     res[1] = (idx / 8) + '1';
     res[2] = '\0';
 }
 
 // Popula o autômato aplicando cálculo 
-
 void popular_automato() {
     // Gerar estados iniciais (linhas da tabela de transicao)
     for (int i = 0; i < NUM_ESTADOS; i++) { 
