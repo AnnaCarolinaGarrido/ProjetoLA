@@ -38,3 +38,5 @@ Se o conteúdo encontrado for diferente de $q_{err}$, a sequência é considerad
 ![Diagrama de Estados](./diagrama_automato_d4.png)
 
 ---
+
+*Nota: Todos os estados que representam casas do tabuleiro são definidos como estados de aceitação ($F$), incluindo o estado inicial $q_0$. O único estado de não-aceitação é o $q_{err}$.*
