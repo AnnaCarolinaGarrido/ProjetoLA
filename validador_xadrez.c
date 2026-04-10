@@ -102,6 +102,7 @@ int main(int argc, char *argv[]) {
 
     // Armazena coordenada atráves do indice
     char temp[4];
+    char temp_next[4];
 
     idx_to_coord(estado_atual, temp);
 
@@ -119,12 +120,18 @@ int main(int argc, char *argv[]) {
         }
 
         // Aplicação da Função de Transição Delta 
+
         estado_atual = transicao[estado_atual][proximo_simbolo];
+
+        // Armazena prox. Item
+        idx_to_coord(proximo_simbolo, temp_next);
+        strcat(caminho, temp_next);
+        
 
         // Se transitar para o estado de erro, a cadeia é interrompida 
         if (estado_atual == ESTADO_ERRO) {
             printf("REJEITADA\n");
-            printf("Ponto de Quebra: %s\n", temp);
+            printf("Ponto de Quebra: %s\n", temp_next);
             return 0;
         }
 
