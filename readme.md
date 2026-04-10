@@ -1,5 +1,6 @@
 # Projeto de Knight Rider 
 **Anna Carolina Rezende Garrido, 10443894**
+Link GitHub: https://github.com/AnnaCarolinaGarrido/ProjetoLA
 
 ## Funcionamento:
 O código do validador funciona com base em uma matriz de transição, criada e alimentada pelo algoritmo a partir de validações matemáticas que verificam se cada movimento da cadeia de entrada respeita o padrão em "L" do Cavalo no tabuleiro.
