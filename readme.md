@@ -4,7 +4,7 @@
 ## Funcionamento:
 O código do validador funciona com base em uma matriz de transição, criada e alimentada pelo algoritmo a partir de validações matemáticas que verificam se cada movimento da cadeia de entrada respeita o padrão em "L" do Cavalo no tabuleiro.
 
-### Matriz de Transicao
+### Matriz de Transição
 O primeiro passo é a estruturação da matriz de transição $\delta$, que é a base de todo o projeto. 
 Considerando que o tabuleiro de xadrez possui 64 casas possíveis ($8\times8$), a matriz possui 64 colunas e 65 linhas. As 64 linhas base representam cada estado operacional e a linha adicional representa o estado de erro ($q_{err}$), funcionando como um estado de "poço".
 
@@ -17,7 +17,7 @@ Caso o estado final seja alcançável através do estado inicial pela métrica d
 
 > **Obs:** É importante notar que, neste caso, os símbolos do alfabeto que permitem as transições são as próprias coordenadas das casas. Por isso, o que seriam os cabeçalhos das colunas na matriz são equivalentes ao valor preenchido na célula (estado de destino) se a condição de verificação for válida.
 
-### Funcao de Transicao
+### Funcao de Transição
 Com a matriz de transição criada e preenchida, o processamento da cadeia torna-se uma consulta simples com esforço de $O(1)$. O sistema verifica o conteúdo presente na matriz utilizando o estado atual (linha) e o próximo símbolo da entrada (coluna).
 
 Se o conteúdo encontrado for diferente de $q_{err}$, a sequência é considerada válida até aquele ponto: o novo estado é assumido e o fluxo recomeça até a finalização da string de entrada ou a detecção de um erro.
