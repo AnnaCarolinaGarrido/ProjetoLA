@@ -215,9 +215,9 @@ int main(int argc, char *argv[]) {
 
     // Resultado
     if (aceito) {
-        printf("Mensagem Válida\n");
+        printf("Cadeia Válida\n");
     } else {
-        printf("Mensagem Inválida\n");
+        printf("Cadeia Inválida\n");
     }
 
     return 0;
